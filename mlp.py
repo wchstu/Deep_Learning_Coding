@@ -11,7 +11,7 @@ def softmax(z):
     z_temp = np.exp(z)
     return z_temp / np.sum(z_temp, axis=1, keepdims=True)
 
-class BP:
+class MLP:
     eps = 1e-8
     def __init__(self, size=(784, 100, 10), lr=0.01, lr_ratio=0.9):
         self.lr = lr
@@ -80,7 +80,7 @@ if __name__ == '__main__':
     X_train = train_set[0]
     Y_train = train_set[1]
 
-    model = BP([784, 200, 70, 10])
+    model = MLP([784, 200, 70, 10])
 
     for epoch in range(epochs):
         indexs = np.arange(len(X_train))
