@@ -76,7 +76,7 @@ class MLP:
 if __name__ == '__main__':
     epochs = 20
     batch_size = 32
-    train_set, valid_set, test_set = mnist('./data', one_hot=True)
+    train_set, valid_set, test_set = mnist('./data/mnist.pkl.gz', one_hot=True)
     X_train = train_set[0]
     Y_train = train_set[1]
 

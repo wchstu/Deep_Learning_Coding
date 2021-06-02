@@ -23,7 +23,7 @@ optim = nn.Adam(model, lr=0.01)
 
 epochs = 2
 batch_size = 32
-train_set, valid_set, test_set = mnist('./data', one_hot=True)
+train_set, valid_set, test_set = mnist('./data/mnist.pkl.gz', one_hot=True)
 X_train = train_set[0].reshape(-1, 1, 28, 28)
 Y_train = train_set[1]
 checkpoints_path = './checkpoints'
