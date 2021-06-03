@@ -5,11 +5,11 @@ import nn
 from dataset import mnist
 
 model = nn.Sequential(nn.Conv2d(in_channels=1, out_channels=6, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2)),
-                      nn.MaxPool2d(kernel_size=(2, 2), stride=(2, 2)),
+                      nn.AvgPool2d(kernel_size=(2, 2), stride=(2, 2)),
                       nn.ReLU(),
                       nn.BatchNorm2d(6),
                       nn.Conv2d(in_channels=6, out_channels=16, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2)),
-                      nn.MaxPool2d(kernel_size=(2, 2), stride=(2, 2)),
+                      nn.AvgPool2d(kernel_size=(2, 2), stride=(2, 2)),
                       nn.ReLU(),
                       nn.BatchNorm2d(16),
                       nn.Flatten(),
