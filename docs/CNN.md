@@ -202,7 +202,7 @@ $$
 
 假设输入特征图$a$维度为$(16, 3, 128, 128)$，卷积核$w$为$(8, 3, 3, 3)$，偏置$b$为$(8)$步长为$(1,1)$，不进行填充，则前向传播过程为：
 
-<img src='./images/forward.png'>
+<img src='../images/forward.png'>
 
 获得输出特征图的反向传播误差$\delta(16, 8, 127,127)$后，计算对输入特征图的反向传播误差，
 $$
@@ -225,11 +225,11 @@ layers = [Conv2d(in_channels=1, out_channels=6, kernel_size=(5, 5), stride=(1, 1
 
 使用随机梯度下降进行梯度更新，完成5轮训练，训练损失变化曲线为
 
-<img src='./images/cnn_loss.png' style='zoom:0.7'>
+<img src='../images/cnn_loss.png' style='zoom:0.7'>
 
 验证准确率变化曲线为：
 
-<img src='./images/cnn_acc.png' style='zoom:0.7'>
+<img src='../images/cnn_acc.png' style='zoom:0.7'>
 
 测试集准确率为0.9798。
 

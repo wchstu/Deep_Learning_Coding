@@ -2,7 +2,7 @@
 
 # 全连接神经网络公式推导及numpy实现
 
-<img src='./images/1.png' style='zoom:0.5'>
+<img src='../images/1.png' style='zoom:0.5'>
 
 全连接神经网络由**输入层、隐藏层和输出层**组成，隐藏层通常有多层，输出层神经元数目与具体任务有关。使用激活函数进行非线性化，增强网络的拟合表征能力，常见的激活函数有ReLU、Sigmoid及Softmax等。本文将推导全连接网络的前向及反向传播公式，并使用numpy进行手动编程实现对mnist数据集的分类。
 
@@ -17,7 +17,7 @@ $$
 
 ### 1.2 Sigmoid激活函数
 
-<img src='./images/sigmoid.png'>
+<img src='../images/sigmoid.png'>
 
 函数公式为
 $$
@@ -187,10 +187,10 @@ python mlp.py
 
 训练损失变化曲线
 
-<img src='./images/loss.png'>
+<img src='../images/loss.png'>
 
 验证准确率变化曲线
 
-<img src='./images/acc.png'>
+<img src='../images/acc.png'>
 
 完成训练后，测试集准确率为0.9179。
