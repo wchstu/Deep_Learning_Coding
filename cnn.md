@@ -151,7 +151,7 @@ w_{21}\delta_{31} & w_{22}\delta_{31}+w_{21}\delta_{32}& w_{22}\delta_{32}+w_{21
 $$
 即将对输出图的误差进行0填充后，与卷积核旋转180度后进行卷积，即获得损失函数对输入特征图的误差。
 
-所以当已知$\delta^l+1$时，计算$\delta^l$，
+所以当已知$\delta^{l+1}$时，计算$\delta^l$，
 $$
 \delta^l = \delta^{l+1}*ROT180(w^{l+1})\odot \frac{\partial a^l}{\partial z^l}
 $$
