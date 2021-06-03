@@ -649,7 +649,7 @@ if __name__ == '__main__':
     print('Test acc = ', acc)
 
     import matplotlib.pyplot as plt
-    plt.plot(range(0, len(train_loss)+1), train_loss)
+    plt.plot(range(1, len(train_loss)+1), train_loss)
     plt.title('Training Loss')
     plt.show()
     plt.plot(range(1, len(val_acc)+1), val_acc)
