@@ -594,23 +594,23 @@ if __name__ == '__main__':
     layers = [Conv2d(in_channels=1, out_channels=6, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2)),
               MaxPool2d(kernel_size=(2, 2), stride=(2, 2)),
               ReLU(),
-              BatchNorm2d(6),
               Conv2d(in_channels=6, out_channels=16, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2)),
               MaxPool2d(kernel_size=(2, 2), stride=(2, 2)),
               ReLU(),
-              BatchNorm2d(16),
               Flatten(),
               Linear(in_features=784, out_features=120),
               ReLU(),
               Linear(in_features=120, out_features=10)]
     loss_fun = CrossEntropyLoss()
 
-    epochs = 10
+    epochs = 5
     batch_size = 32
     train_set, valid_set, test_set = mnist('./data/mnist.pkl.gz', one_hot=True)
     X_train = train_set[0].reshape(-1, 1, 28, 28)
     Y_train = train_set[1]
 
+    train_loss = []
+    val_acc = []
     for epoch in range(epochs):
         indexs = np.arange(len(X_train))
         steps = len(X_train) // batch_size
@@ -623,7 +623,7 @@ if __name__ == '__main__':
             for fun in layers:
                 x = fun.forward(x)
             loss = loss_fun(x, y)
-
+            train_loss.append(float(loss.loss))
             delta = loss.backward()
             for fun in layers[::-1]:
                 delta = fun.backward(delta)
@@ -636,8 +636,9 @@ if __name__ == '__main__':
                     val_x = fun.forward(val_x)
                 prev = np.argmax(val_x, axis=1)
                 target = np.argmax(valid_set[1], axis=1)
-                print('epoch {}, step {}, loss = {}, val acc = {}'.format(epoch + 1, i + 1, loss,
-                                                                          sum(prev == target) / len(target)))
+                acc = sum(prev == target) / len(target)
+                val_acc.append(acc)
+                print('epoch {}, step {}, loss = {}, val acc = {}'.format(epoch + 1, i + 1, loss, acc))
 
     test_x = test_set[0].reshape(-1, 1, 28, 28)
     for fun in layers:
@@ -646,3 +647,11 @@ if __name__ == '__main__':
     target = np.argmax(test_set[1], axis=1)
     acc = sum(prev == target) / len(target)
     print('Test acc = ', acc)
+
+    import matplotlib.pyplot as plt
+    plt.plot(range(0, len(train_loss)+1), train_loss)
+    plt.title('Training Loss')
+    plt.show()
+    plt.plot(range(1, len(val_acc)+1), val_acc)
+    plt.title('Validation Accuracy')
+    plt.show()
