@@ -99,7 +99,6 @@ class AvgPool2d(Module):
 if __name__ == '__main__':
     import torch
     from torch import nn
-    import time
     x = np.random.randint(0, 10, size=(2, 3, 4, 4))
 
     model = nn.AvgPool2d(kernel_size=(2, 2), stride=(1, 1))

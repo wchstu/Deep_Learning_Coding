@@ -40,7 +40,7 @@ $$
 $$
 当$k\ne i$时，
 $$
-\frac{\partial f(x_i)}{\partial x_k} = \frac{-e^{x_i}e^{x_k}}{\sum^n_{j=1}e^{x_j}}=-f(x_i)f(x_k)
+\frac{\partial f(x_i)}{\partial x_k} = \frac{-e^{x_i}e^{x_k}}{(\sum^n_{j=1}e^{x_j})^2}=-f(x_i)f(x_k)
 $$
 则
 $$
